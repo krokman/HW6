@@ -1,7 +1,4 @@
-import java.io.ByteArrayInputStream;
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.Serializable;
+import java.io.*;
 import java.util.Objects;
 
 public class Animal implements Serializable {
@@ -34,7 +31,20 @@ public class Animal implements Serializable {
 				animalArray[i] = (Animal) input.readObject();
 			}
 			return animalArray;
+		} catch (ClassCastException e){
 		} catch (ClassNotFoundException e) {
+		} catch (IOException e) {
+		}
+		throw new IllegalArgumentException("Wrong data");
+	}
+	public static byte[] serializeAnimalArray(Animal[] animalArray) {
+		try (ByteArrayOutputStream baos = new ByteArrayOutputStream();
+		     ObjectOutputStream oos = new ObjectOutputStream(baos)) {
+			oos.writeInt(animalArray.length);
+			for (int i = 0; i < animalArray.length; i++) {
+				oos.writeObject(animalArray[i]);
+			}
+			return baos.toByteArray();
 		} catch (IOException e) {
 		}
 		throw new IllegalArgumentException("Wrong data");

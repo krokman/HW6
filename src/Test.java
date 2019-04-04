@@ -1,11 +1,8 @@
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.io.ObjectOutputStream;
 import java.util.HashSet;
 import java.util.Set;
 
 public class Test {
-	public static void main(String[] args) throws IOException {
+	public static void main(String[] args) {
 		// Pair
 		Pair<String, Integer> element = Pair.of("Element", 123);
 		Pair<String, Integer> elementClone = Pair.of("Element", 123);
@@ -28,19 +25,13 @@ public class Test {
 		System.out.println("SymmetricDifference = " + result);
 
 		// Serialize
-		Animal[] animalM1 = {new Animal("Cat"), new Animal("Dog"), new Animal("Elephant"),
+		Animal[] animalM1 = { new Animal("Cat"), new Animal("Dog"), new Animal("Elephant"),
 				new Animal("Cock"), new Animal("Bull"), new Animal("Ant"),
 				new Animal("Tentecles"), new Animal("Worm")};
-		ByteArrayOutputStream bai = new ByteArrayOutputStream();
-		ObjectOutputStream oos = new ObjectOutputStream(bai);
-		oos.writeInt(animalM1.length);
-		for (int i = 0; i < animalM1.length; i++) {
-			oos.writeObject(animalM1[i]);
-		}
-		oos.flush();
-		oos.close();
-		Animal[] animalM2 = Animal.deserializeAnimalArray(bai.toByteArray());
-		System.out.println(animalM2[0] + " " + animalM2[1] + "" + animalM2[animalM1.length - 1]);
+
+		byte[] byteArray = Animal.serializeAnimalArray(animalM1);
+		Animal[] animalM2 = Animal.deserializeAnimalArray(byteArray);
+		System.out.println(animalM2[0] + " " +animalM2[1] + "" + animalM2[animalM1.length -1]);
 	}
 }
 
