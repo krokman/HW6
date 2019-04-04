@@ -31,12 +31,13 @@ public class Animal implements Serializable {
 				animalArray[i] = (Animal) input.readObject();
 			}
 			return animalArray;
-		} catch (ClassCastException e){
+		} catch (ClassCastException e) {
 		} catch (ClassNotFoundException e) {
 		} catch (IOException e) {
 		}
 		throw new IllegalArgumentException("Wrong data");
 	}
+
 	public static byte[] serializeAnimalArray(Animal[] animalArray) {
 		try (ByteArrayOutputStream baos = new ByteArrayOutputStream();
 		     ObjectOutputStream oos = new ObjectOutputStream(baos)) {

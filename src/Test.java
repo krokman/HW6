@@ -25,13 +25,13 @@ public class Test {
 		System.out.println("SymmetricDifference = " + result);
 
 		// Serialize
-		Animal[] animalM1 = { new Animal("Cat"), new Animal("Dog"), new Animal("Elephant"),
+		Animal[] animalSpecies = { new Animal("Cat"), new Animal("Dog"), new Animal("Elephant"),
 				new Animal("Cock"), new Animal("Bull"), new Animal("Ant"),
 				new Animal("Tentecles"), new Animal("Worm")};
 
-		byte[] byteArray = Animal.serializeAnimalArray(animalM1);
-		Animal[] animalM2 = Animal.deserializeAnimalArray(byteArray);
-		System.out.println(animalM2[0] + " " +animalM2[1] + "" + animalM2[animalM1.length -1]);
+		byte[] byteArray = Animal.serializeAnimalArray(animalSpecies);
+		animalSpecies = Animal.deserializeAnimalArray(byteArray);
+		System.out.println(animalSpecies[0] + " " +animalSpecies[1] + "" + animalSpecies[animalSpecies.length -1]);
 	}
 }
 
