@@ -28,7 +28,7 @@ public class Test {
 		System.out.println("SymmetricDifference = " + result);
 
 		// Serialize
-		Animal[] animalM1 = { new Animal("Cat"), new Animal("Dog"), new Animal("Elephant"),
+		Animal[] animalM1 = {new Animal("Cat"), new Animal("Dog"), new Animal("Elephant"),
 				new Animal("Cock"), new Animal("Bull"), new Animal("Ant"),
 				new Animal("Tentecles"), new Animal("Worm")};
 		ByteArrayOutputStream bai = new ByteArrayOutputStream();
@@ -40,7 +40,7 @@ public class Test {
 		oos.flush();
 		oos.close();
 		Animal[] animalM2 = Animal.deserializeAnimalArray(bai.toByteArray());
-		System.out.println(animalM2[0] + " " +animalM2[1] + "" + animalM2[animalM1.length -1]);
+		System.out.println(animalM2[0] + " " + animalM2[1] + "" + animalM2[animalM1.length - 1]);
 	}
 }
 

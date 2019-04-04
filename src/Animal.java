@@ -1,4 +1,7 @@
-import java.io.*;
+import java.io.ByteArrayInputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.Serializable;
 import java.util.Objects;
 
 public class Animal implements Serializable {
@@ -24,16 +27,17 @@ public class Animal implements Serializable {
 	}
 
 	public static Animal[] deserializeAnimalArray(byte[] data) {
-		try(ObjectInputStream input = new ObjectInputStream(new ByteArrayInputStream(data))) {
+		try (ObjectInputStream input = new ObjectInputStream(new ByteArrayInputStream(data))) {
 			int size = input.readInt();
 			Animal[] animalArray = new Animal[size];
 			for (int i = 0; i < size; i++) {
 				animalArray[i] = (Animal) input.readObject();
 			}
 			return animalArray;
-		}catch(ClassNotFoundException e){throw new IllegalArgumentException();
-		}catch(IOException e){
+		} catch (ClassNotFoundException e) {
+			throw new IllegalArgumentException();
+		} catch (IOException e) {
 		}
-		throw new IllegalArgumentException ("Wrong data");
+		throw new IllegalArgumentException("Wrong data");
 	}
 }

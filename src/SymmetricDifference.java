@@ -1,5 +1,3 @@
-import java.lang.reflect.Array;
-import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -7,7 +5,7 @@ public class SymmetricDifference {
 	public static <T> Set<T> symmetricDifference(Set<? extends T> set1, Set<? extends T> set2) {
 		Set<? extends T> list1 = new HashSet<>(set1);
 		Set<? extends T> list1forRetain = new HashSet<>(set1);
-		Set<? extends T> list2 =  new HashSet<>(set2);
+		Set<? extends T> list2 = new HashSet<>(set2);
 		list1forRetain.retainAll(set2);
 		list1.removeAll(list1forRetain);
 		list2.removeAll(list1forRetain);
