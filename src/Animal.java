@@ -35,7 +35,6 @@ public class Animal implements Serializable {
 			}
 			return animalArray;
 		} catch (ClassNotFoundException e) {
-			throw new IllegalArgumentException();
 		} catch (IOException e) {
 		}
 		throw new IllegalArgumentException("Wrong data");
